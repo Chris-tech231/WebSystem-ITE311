@@ -11,10 +11,7 @@ class Migrations extends BaseConfig
      * Enable/Disable Migrations
      * --------------------------------------------------------------------------
      *
-     * Migrations are enabled by default.
-     *
-     * You should enable migrations whenever you intend to do a schema migration
-     * and disable it back when you're done.
+     * Set to true whenever you want to run schema migrations.
      */
     public bool $enabled = true;
 
@@ -23,9 +20,7 @@ class Migrations extends BaseConfig
      * Migrations Table
      * --------------------------------------------------------------------------
      *
-     * This is the name of the table that will store the current migrations state.
-     * When migrations runs it will store in a database table which migration
-     * files have already been run.
+     * This table stores the current state of all migrations.
      */
     public string $table = 'migrations';
 
@@ -34,17 +29,14 @@ class Migrations extends BaseConfig
      * Timestamp Format
      * --------------------------------------------------------------------------
      *
-     * This is the format that will be used when creating new migrations
-     * using the CLI command:
-     *   > php spark make:migration
+     * Controls how migration filenames are generated.
+     * 
+     * Recommended for "sequential-like" numbering:
+     * - 'YmdHis_'  → 20250817120000_CreateUsers.php
      *
-     * NOTE: if you set an unsupported format, migration runner will not find
-     *       your migration files.
-     *
-     * Supported formats:
-     * - YmdHis_
-     * - Y-m-d-His_
-     * - Y_m_d_His_
+     * Other supported formats:
+     * - 'Y-m-d-His_'
+     * - 'Y_m_d_His_'
      */
-    public string $timestampFormat = 'Y-m-d-His_';
+    public string $timestampFormat = 'YmdHis_'; // behaves like sequential order
 }
