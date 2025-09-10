@@ -11,7 +11,7 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">My CI App</a>
+    <a class="navbar-brand" href="<?= base_url('/') ?>">My CI App</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
             data-bs-target="#navbarNav" aria-controls="navbarNav" 
             aria-expanded="false" aria-label="Toggle navigation">
@@ -20,23 +20,27 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home</a>
+          <a class="nav-link <?= (url_is('/') ? 'active' : '') ?>" href="<?= base_url('public//') ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link <?= (url_is('about') ? 'active' : '') ?>" href="<?= base_url('public/about') ?>">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link <?= (url_is('contact') ? 'active' : '') ?>" href="<?= base_url('public/contact') ?>">Contact</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Test Container -->
+<!-- Page Content -->
 <div class="container mt-5">
-    <h1 class="text-primary text-center">Bootstrap Integrated with CodeIgniter</h1>
-    <p class="text-muted text-center">If you see this styled navbar & heading, Bootstrap is working!</p>
+    <h1 class="text-primary text-center">
+        <?= $title ?? 'Welcome to My CI App' ?>
+    </h1>
+    <p class="text-muted text-center">
+        <?= $content ?? 'This is a sample page.' ?>
+    </p>
 </div>
 
 <!-- Bootstrap JS -->
