@@ -17,3 +17,20 @@ $routes->get('contact', 'Home::contact');
 
 // Optional: Allow "/home" to work as well
 $routes->get('home', 'Home::index');
+
+$routes->get('register', 'Auth::register');
+$routes->post('register', 'Auth::register');
+
+// Normalize to lowercase routes
+$routes->get('login', 'Auth::login');
+$routes->post('login', 'Auth::login');
+
+$routes->get('logout', 'Auth::logout');
+$routes->get('dashboard', 'Auth::dashboard');
+
+// Backward compatible uppercase aliases (avoid 404 when users hit /Register or /Login)
+$routes->get('Register', 'Auth::register');
+$routes->post('Register', 'Auth::register');
+$routes->get('login', 'Auth::login');
+$routes->post('login', 'Auth::login');
+

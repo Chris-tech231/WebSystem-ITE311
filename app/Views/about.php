@@ -13,9 +13,9 @@
       <a class="navbar-brand" href="<?= base_url('/') ?>">ITE311</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('public//') ?>">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="<?= base_url('public/about') ?>">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('public/contact') ?>">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('') ?>">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="<?= base_url('about') ?>">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('contact') ?>">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -23,36 +23,7 @@
 
   <!-- Content -->
   <div class="container mt-5">
-    <h1 class="mb-4">About Us</h1>
+    <h1 class="mb-4">About Homepage</h1>
     <p>Our project is built with CodeIgniter 4 to demonstrate MVC, routing, and Bootstrap integration.</p>
 
-    <h3 class="mt-4">Our Team</h3>
-    <table class="table table-bordered table-striped mt-3">
-      <thead class="table-dark">
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Specialty</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Juan Dela Cruz</td>
-          <td>Leader</td>
-          <td>Backend Development</td>
-        </tr>
-        <tr>
-          <td>Maria Santos</td>
-          <td>Member</td>
-          <td>Frontend Development</td>
-        </tr>
-        <tr>
-          <td>Jose Rizal</td>
-          <td>Member</td>
-          <td>Database Design</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</body>
-</html>
+    

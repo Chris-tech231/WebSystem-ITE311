@@ -13,9 +13,9 @@
       <a class="navbar-brand" href="<?= base_url('/') ?>">ITE311</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('public//') ?>">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= base_url('public/about') ?>">About</a></li>
-          <li class="nav-item"><a class="nav-link active" href="<?= base_url('public/contact') ?>">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('') ?>">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="<?= base_url('contact') ?>">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -23,24 +23,7 @@
 
   <!-- Content -->
   <div class="container mt-5">
-    <h1>Contact Us</h1>
-    <p>If you’d like to get in touch, fill out the form below:</p>
+    <h1>Contact Homepage</h1>
+    <p>Our project is built with CodeIgniter 4 to demonstrate MVC, routing, and Bootstrap integration.</p>
 
-    <form class="mt-3">
-      <div class="mb-3">
-        <label for="name" class="form-label">Your Name</label>
-        <input type="text" id="name" class="form-control" placeholder="Enter your name">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Your Email</label>
-        <input type="email" id="email" class="form-control" placeholder="Enter your email">
-      </div>
-      <div class="mb-3">
-        <label for="message" class="form-label">Message</label>
-        <textarea id="message" class="form-control" rows="4" placeholder="Type your message"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-  </div>
-</body>
-</html>
+    

@@ -1,90 +1,273 @@
-ERROR - 2025-09-04 05:28:56 --> mysqli_sql_exception: Tablespace for table '`lms_macias`.`migrations`' exists. Please DISCARD the tablespace before IMPORT in C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php:327
+ERROR - 2025-09-04 06:51:40 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:201
 Stack trace:
-#0 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `m...', 0)
-#1 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `m...')
-#2 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `m...')
-#3 C:\xampp\htdocs\ITE311-MACIAS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `m...')
-#4 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(815): CodeIgniter\Database\Forge->createTable('migrations', true)
-#5 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
-#6 C:\xampp\htdocs\ITE311-MACIAS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
-#7 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
-#8 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
-#9 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
-#10 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
-#11 C:\xampp\htdocs\ITE311-MACIAS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
-#12 {main}
-ERROR - 2025-09-04 05:28:57 --> mysqli_sql_exception: Table 'lms_macias.migrations' doesn't exist in C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php:327
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'lms_navales', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:246
 Stack trace:
-#0 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
-#1 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
-#2 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
-#3 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
-#4 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(660): CodeIgniter\Database\BaseBuilder->get()
-#5 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(175): CodeIgniter\Database\MigrationRunner->getHistory('')
-#6 C:\xampp\htdocs\ITE311-MACIAS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
-#7 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
-#8 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
-#9 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
-#10 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
-#11 C:\xampp\htdocs\ITE311-MACIAS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 #12 {main}
-ERROR - 2025-09-04 05:28:57 --> mysqli_sql_exception: Table 'lms_macias.migrations' doesn't exist in C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php:327
+CRITICAL - 2025-09-04 06:51:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'lms_navales'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-04 06:52:00 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:201
 Stack trace:
-#0 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT MAX(`bat...', 0)
-#1 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(`bat...')
-#2 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(`bat...')
-#3 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT MAX(`bat...', Array, false)
-#4 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(708): CodeIgniter\Database\BaseBuilder->get()
-#5 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(179): CodeIgniter\Database\MigrationRunner->getLastBatch()
-#6 C:\xampp\htdocs\ITE311-MACIAS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
-#7 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
-#8 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
-#9 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
-#10 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
-#11 C:\xampp\htdocs\ITE311-MACIAS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
-#12 {main}
-ERROR - 2025-09-04 05:32:44 --> mysqli_sql_exception: Tablespace for table '`lms_macias`.`migrations`' exists. Please DISCARD the tablespace before IMPORT in C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php:327
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'lms_navales', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:246
 Stack trace:
-#0 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `m...', 0)
-#1 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `m...')
-#2 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `m...')
-#3 C:\xampp\htdocs\ITE311-MACIAS\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `m...')
-#4 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(815): CodeIgniter\Database\Forge->createTable('migrations', true)
-#5 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
-#6 C:\xampp\htdocs\ITE311-MACIAS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
-#7 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
-#8 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
-#9 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
-#10 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
-#11 C:\xampp\htdocs\ITE311-MACIAS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 #12 {main}
-ERROR - 2025-09-04 05:32:44 --> mysqli_sql_exception: Table 'lms_macias.migrations' doesn't exist in C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php:327
+CRITICAL - 2025-09-04 06:52:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'lms_navales'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-04 06:57:39 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:201
 Stack trace:
-#0 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
-#1 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
-#2 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
-#3 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
-#4 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(660): CodeIgniter\Database\BaseBuilder->get()
-#5 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(175): CodeIgniter\Database\MigrationRunner->getHistory('')
-#6 C:\xampp\htdocs\ITE311-MACIAS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
-#7 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
-#8 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
-#9 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
-#10 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
-#11 C:\xampp\htdocs\ITE311-MACIAS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
-#12 {main}
-ERROR - 2025-09-04 05:32:44 --> mysqli_sql_exception: Table 'lms_macias.migrations' doesn't exist in C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php:327
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'lms_navales', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:246
 Stack trace:
-#0 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT MAX(`bat...', 0)
-#1 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(`bat...')
-#2 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(`bat...')
-#3 C:\xampp\htdocs\ITE311-MACIAS\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT MAX(`bat...', Array, false)
-#4 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(708): CodeIgniter\Database\BaseBuilder->get()
-#5 C:\xampp\htdocs\ITE311-MACIAS\system\Database\MigrationRunner.php(179): CodeIgniter\Database\MigrationRunner->getLastBatch()
-#6 C:\xampp\htdocs\ITE311-MACIAS\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
-#7 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
-#8 C:\xampp\htdocs\ITE311-MACIAS\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
-#9 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(388): CodeIgniter\CLI\Console->run()
-#10 C:\xampp\htdocs\ITE311-MACIAS\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
-#11 C:\xampp\htdocs\ITE311-MACIAS\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 #12 {main}
+CRITICAL - 2025-09-04 06:57:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'lms_navales'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-04 07:07:27 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'lms_navales', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\ITE311-NAVALES\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\ITE311-NAVALES\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-09-04 07:07:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'lms_navales'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->attempt()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-04 07:16:28 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'lms_navales', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\ITE311-NAVALES\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#10 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\xampp\htdocs\ITE311-NAVALES\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+ERROR - 2025-09-04 07:16:55 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'lms_navales', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\Database.php(72): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\Config.php(109): CodeIgniter\Database\Database->loadForge(Object(CodeIgniter\Database\MySQLi\Connection))
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Database\Seeder.php(98): CodeIgniter\Database\Config::forge(NULL)
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\Commands\Database\Seed.php(71): CodeIgniter\Database\Seeder->__construct(Object(Config\Database))
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#9 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#10 C:\xampp\htdocs\ITE311-NAVALES\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'lms_navales' in C:\xampp\htdocs\ITE311-NAVALES\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-NAVALES\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-NAVALES\system\Database\Database.php(72): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-NAVALES\system\Database\Config.php(109): CodeIgniter\Database\Database->loadForge(Object(CodeIgniter\Database\MySQLi\Connection))
+#3 C:\xampp\htdocs\ITE311-NAVALES\system\Database\Seeder.php(98): CodeIgniter\Database\Config::forge(NULL)
+#4 C:\xampp\htdocs\ITE311-NAVALES\system\Commands\Database\Seed.php(71): CodeIgniter\Database\Seeder->__construct(Object(Config\Database))
+#5 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#6 C:\xampp\htdocs\ITE311-NAVALES\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#7 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#8 C:\xampp\htdocs\ITE311-NAVALES\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#9 C:\xampp\htdocs\ITE311-NAVALES\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2025-09-04 07:16:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'lms_navales'
+[Method: CLI, Route: db:seed/UserSeeder]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\Database.php(72): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\Config.php(109): CodeIgniter\Database\Database->loadForge(Object(CodeIgniter\Database\MySQLi\Connection))
+ 3 SYSTEMPATH\Database\Seeder.php(98): CodeIgniter\Database\Config::forge(null)
+ 4 SYSTEMPATH\Commands\Database\Seed.php(71): CodeIgniter\Database\Seeder->__construct(Object(Config\Database))
+ 5 SYSTEMPATH\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run([...])
+ 6 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', [...])
+ 7 SYSTEMPATH\Boot.php(388): CodeIgniter\CLI\Console->run()
+ 8 SYSTEMPATH\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 9 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))

@@ -1,43 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeIgniter with Bootstrap</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= base_url('/') ?>">ITE311</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link <?= url_is('/') ? 'active' : '' ?>" href="<?= base_url('public//') ?>">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= url_is('about') ? 'active' : '' ?>" href="<?= base_url('public/about') ?>">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= url_is('contact') ? 'active' : '' ?>" href="<?= base_url('public/contact') ?>">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+use CodeIgniter\Boot;
+use Config\Paths;
 
-<div class="container mt-4">
-    <h1>Welcome to CodeIgniter with Bootstrap</h1>
-    <p>This is the <strong>Home Page</strong>.</p>
-</div>
+/*
+ *---------------------------------------------------------------
+ * CHECK PHP VERSION
+ *---------------------------------------------------------------
+ */
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+$minPhpVersion = '8.1'; // If you update this, don't forget to update `spark`.
+if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
+    $message = sprintf(
+        'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
+        $minPhpVersion,
+        PHP_VERSION,
+    );
+
+    header('HTTP/1.1 503 Service Unavailable.', true, 503);
+    echo $message;
+
+    exit(1);
+}
+
+/*
+ *---------------------------------------------------------------
+ * SET THE CURRENT DIRECTORY
+ *---------------------------------------------------------------
+ */
+
+// Path to the front controller (this file)
+define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+
+// Ensure the current directory is pointing to the front controller's directory
+if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
+    chdir(FCPATH);
+}
+
+/*
+ *---------------------------------------------------------------
+ * BOOTSTRAP THE APPLICATION
+ *---------------------------------------------------------------
+ * This process sets up the path constants, loads and registers
+ * our autoloader, along with Composer's, loads our constants
+ * and fires up an environment-specific bootstrapping.
+ */
+
+// LOAD OUR PATHS CONFIG FILE
+// This is the line that might need to be changed, depending on your folder structure.
+require FCPATH . 'app/Config/Paths.php';
+// ^^^ Change this line if you move your application folder
+
+$paths = new Paths();
+
+// LOAD THE FRAMEWORK BOOTSTRAP FILE
+require $paths->systemDirectory . '/Boot.php';
+
+exit(Boot::bootWeb($paths));

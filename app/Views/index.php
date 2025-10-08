@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link <?= url_is('/') ? 'active' : '' ?>" href="<?= base_url('public//') ?>">Home</a>
+                    <a class="nav-link <?= url_is('/') ? 'active' : '' ?>" href="<?= base_url('') ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= url_is('about') ? 'active' : '' ?>" href="<?= base_url('public/about') ?>">About</a>
+                    <a class="nav-link <?= url_is('about') ? 'active' : '' ?>" href="<?= base_url('about') ?>">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= url_is('contact') ? 'active' : '' ?>" href="<?= base_url('public/contact') ?>">Contact</a>
+                    <a class="nav-link <?= url_is('contact') ? 'active' : '' ?>" href="<?= base_url('contact') ?>">Contact</a>
                 </li>
             </ul>
         </div>
