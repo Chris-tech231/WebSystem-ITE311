@@ -37,6 +37,9 @@ $routes->post('login', 'Auth::login');
 
 // Announcements route
 $routes->get('announcements', 'Announcement::index');
+$routes->get('/teacher/dashboard', 'Teacher::dashboard');
+$routes->get('/admin/dashboard', 'Admin::dashboard');
+
 
 
 // ... we'll add more routes later for other tasks ...
