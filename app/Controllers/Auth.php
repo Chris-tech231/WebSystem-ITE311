@@ -78,7 +78,7 @@ class Auth extends BaseController
                 } else {
                     //  Invalid credentials
                     return redirect()
-                        ->to(base_url('Login'))
+                        ->to(base_url('login'))
                         ->with('error', 'Invalid login credentials.');
                 }
             } else {
@@ -97,7 +97,7 @@ class Auth extends BaseController
         $session = session();
         if (!$session->get('isLoggedIn')) {
             return redirect()
-                ->to(base_url('Login'))
+                ->to(base_url('login'))
                 ->with('error', 'Please login first.');
         }
 

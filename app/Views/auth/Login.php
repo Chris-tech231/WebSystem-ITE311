@@ -20,7 +20,7 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?= site_url('login') ?>">Login</a>
+                    <a class="nav-link active" href="<?= site_url('login') ?>">login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('register') ?>">Register</a>
