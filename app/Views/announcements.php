@@ -1,40 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Announcements - Student Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Announcements</title>
+    <link rel="stylesheet" href="<?= base_url('assets/bootstrap.min.css') ?>">
 </head>
-<body>
-    <div class="container mt-4">
-        <h1 class="mb-4">University Announcements</h1>
-        
-        <?php if (empty($announcements)): ?>
-            <div class="alert alert-info">
-                No announcements available at the moment.
-            </div>
-        <?php else: ?>
-            <div class="row">
-                <?php foreach ($announcements as $announcement): ?>
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= esc($announcement['title']) ?></h5>
-                                <p class="card-text"><?= esc($announcement['content']) ?></p>
-                                <p class="card-text">
-                                    <small class="text-muted">
-                                        Posted on: <?= date('F j, Y g:i A', strtotime($announcement['created_at'])) ?>
-                                    </small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-    </div>
+<body class="p-4">
+<div class="container">
+    <h1 class="mb-4">Announcements</h1>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?php if (! empty($message)) : ?>
+        <div class="alert alert-danger"><?= esc($message) ?></div>
+    <?php endif; ?>
+
+    <?php if (empty($announcements)) : ?>
+        <div class="alert alert-info">No announcements yet.</div>
+    <?php else: ?>
+        <div class="list-group">
+            <?php foreach ($announcements as $a): ?>
+                <div class="list-group-item mb-2">
+                    <h5 class="mb-1"><?= esc($a['title']) ?></h5>
+                    <small class="text-muted"><?= date('F j, Y, g:ia', strtotime($a['created_at'])) ?></small>
+                    <p class="mb-0 mt-2"><?= nl2br(esc($a['content'])) ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</div>
 </body>
 </html>

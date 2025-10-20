@@ -34,15 +34,10 @@ $routes->post('register', 'Auth::register');
 $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::login');
 
-use App\Controllers\Announcement;
-use App\Controllers\Admin;
-use App\Controllers\Teacher;
-use App\Filters\RoleAuth;
-
-// ... existing routes ...
 
 // Announcements route
-$routes->get('announcements', [Announcement::class, 'index']);
+$routes->get('announcements', 'Announcement::index');
+
 
 // ... we'll add more routes later for other tasks ...
 
