@@ -34,7 +34,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        'roleauth'      => \App\Filters\RoleAuth::class, // ✅ Added custom RoleAuth filter
+        'auth'          => \App\Filters\Auth::class,      // ✅ Custom Auth filter
+        'roleAuth'      => \App\Filters\RoleAuth::class,  // ✅ Custom RoleAuth filter
     ];
 
     /**
@@ -42,8 +43,8 @@ class Filters extends BaseFilters
      */
     public array $required = [
         'before' => [
-            'forcehttps', // Force Global Secure Requests
-            'pagecache',  // Web Page Caching
+            // 'forcehttps', // Force Global Secure Requests
+            // 'pagecache',  // Web Page Caching
         ],
         'after' => [
             'pagecache',   // Web Page Caching
@@ -59,10 +60,11 @@ class Filters extends BaseFilters
     public array $globals = [
         'before' => [
             // 'honeypot',
-            // 'csrf',
+            // 'csrf', // Enable for form security
             // 'invalidchars',
         ],
         'after' => [
+            'toolbar', // Debug Toolbar for development
             // 'honeypot',
             // 'secureheaders',
         ],
@@ -72,11 +74,23 @@ class Filters extends BaseFilters
      * List of filter aliases that works on a
      * particular HTTP method (GET, POST, etc.).
      */
-    public array $methods = [];
+    public array $methods = [
+        'post' => [
+            // 'csrf', // Enable CSRF protection for POST requests
+        ],
+        'get' => [
+            // Add GET-specific filters if needed
+        ],
+    ];
 
     /**
      * List of filter aliases that should run on any
      * before or after URI patterns.
      */
-    public array $filters = [];
+    public array $filters = [
+        'before' => [
+            // 'auth' => ['except' => 'login/*'], // Example: Apply auth filter everywhere except login
+        ],
+        'after' => [],
+    ];
 }
