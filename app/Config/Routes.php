@@ -34,14 +34,20 @@ $routes->post('register', 'Auth::register');
 $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::login');
 
+$routes->get('/announcements', 'Announcements::index');
 
-// Announcements route
-$routes->get('announcements', 'Announcement::index');
-$routes->get('/teacher/dashboard', 'Teacher::dashboard');
-$routes->get('/admin/dashboard', 'Admin::dashboard');
+$routes->get('announcements', 'Announcements::index');
 
+// Protected routes with RoleAuth filter
+$routes->group('admin', ['filter' => 'roleauth'], function($routes) {
+    $routes->get('dashboard', 'Admin::dashboard');
+});
 
+$routes->group('teacher', ['filter' => 'roleauth'], function($routes) {
+    $routes->get('dashboard', 'Teacher::dashboard');
+});
 
-// ... we'll add more routes later for other tasks ...
-
-
+// You can add student routes here if needed in the future
+$routes->group('student', ['filter' => 'roleauth'], function($routes) {
+    // Add student-specific routes here
+});

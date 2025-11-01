@@ -6,13 +6,20 @@ use App\Models\AnnouncementModel;
 
 class Announcement extends BaseController
 {
+    protected $announcementModel;
+
+    public function __construct()
+    {
+        $this->announcementModel = new AnnouncementModel();
+    }
+
     public function index()
     {
-        $announcementModel = new AnnouncementModel();
         $data = [
-            'announcements' => $announcementModel->orderBy('created_at', 'DESC')->findAll()
+            'title' => 'Announcements',
+            'announcements' => $this->announcementModel->orderBy('created_at', 'DESC')->findAll()
         ];
-        
+
         return view('announcements', $data);
     }
 }

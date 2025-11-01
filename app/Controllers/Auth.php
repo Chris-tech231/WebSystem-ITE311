@@ -6,112 +6,45 @@ use App\Models\UserModel;
 
 class Auth extends BaseController
 {
-    /**
-     * Register new users
-     */
-    public function register()
-    {
-        helper(['form']);
-        $data = [];
-
-        if ($this->request->is('post')) {
-            $rules = [
-                'name'             => 'required|min_length[3]|max_length[100]',
-                'email'            => 'required|valid_email|is_unique[users.email]',
-                'password'         => 'required|min_length[6]|max_length[255]',
-                'password_confirm' => 'matches[password]'
-            ];
-
-            if ($this->validate($rules)) {
-                $userModel = new UserModel();
-                $userModel->save([
-                    'name'     => $this->request->getVar('name'),
-                    'email'    => $this->request->getVar('email'),
-                    'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                    'role'     => 'user'
-                ]);
-
-                // ✅ Success → write flashdata, then redirect to login
-                session()->setFlashdata('success', 'Registration successful! You can now login.');
-                return redirect()->to(site_url('login'));
-            } else {
-                // Validation failed → send errors to view
-                $data['validation'] = $this->validator;
-            }
-        }
-
-        return view('auth/Register', $data);
-    }
-
-    /**
-     * Login users
-     */
     public function login()
     {
-        helper(['form']);
-        $data = [];
+        if ($this->request->getMethod() === 'post') {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
 
-        if ($this->request->is('post')) {
-            $rules = [
-                'email'    => 'required|valid_email',
-                'password' => 'required|min_length[6]|max_length[255]'
-            ];
+            $userModel = new UserModel();
+            $user = $userModel->where('email', $email)->first();
 
-            if ($this->validate($rules)) {
-                $userModel = new UserModel();
-                $user = $userModel->where('email', $this->request->getVar('email'))->first();
+            if ($user && password_verify($password, $user['password'])) {
+                $session = session();
+                $session->set([
+                    'user_id' => $user['id'],
+                    'email' => $user['email'],
+                    'role' => $user['role'],
+                    'logged_in' => true
+                ]);
 
-                if ($user && password_verify($this->request->getVar('password'), $user['password'])) {
-                    // ✅ Create session
-                    $session = session();
-                    $session->set([
-                        'id'         => $user['id'],
-                        'name'       => $user['name'],
-                        'email'      => $user['email'],
-                        'role'       => $user['role'],
-                        'isLoggedIn' => true,
-                    ]);
-
-                    return redirect()
-                        ->to(base_url('dashboard'))
-                        ->with('success', 'Welcome back, ' . $user['name'] . '!');
-                } else {
-                    //  Invalid credentials
-                    return redirect()
-                        ->to(base_url('login'))
-                        ->with('error', 'Invalid login credentials.');
+                // Role-based redirection
+                switch ($user['role']) {
+                    case 'admin':
+                        return redirect()->to('/admin/dashboard');
+                    case 'teacher':
+                        return redirect()->to('/teacher/dashboard');
+                    case 'student':
+                    default:
+                        return redirect()->to('/announcements');
                 }
             } else {
-                $data['validation'] = $this->validator;
+                return redirect()->back()->with('error', 'Invalid email or password');
             }
         }
 
-        return view('auth/Login', $data);
+        return view('auth/login');
     }
 
-    /**
-     * Protected dashboard
-     */
-    public function dashboard()
-    {
-        $session = session();
-        if (!$session->get('isLoggedIn')) {
-            return redirect()
-                ->to(base_url('login'))
-                ->with('error', 'Please login first.');
-        }
-
-        return view('auth/Dashboard');
-    }
-
-    /**
-     * Logout user
-     */
     public function logout()
     {
         session()->destroy();
-        return redirect()
-            ->to(base_url('/login'))
-            ->with('success', 'You have successfully logged out.');
+        return redirect()->to('/login');
     }
 }

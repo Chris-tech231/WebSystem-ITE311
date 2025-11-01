@@ -1,31 +1,40 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Announcements</title>
-    <link rel="stylesheet" href="<?= base_url('assets/bootstrap.min.css') ?>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="p-4">
-<div class="container">
-    <h1 class="mb-4">Announcements</h1>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="mb-4">University Announcements</h1>
+                
+                <?php if (session()->getFlashdata('error')): ?>
+                    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+                <?php endif; ?>
 
-    <?php if (! empty($message)) : ?>
-        <div class="alert alert-danger"><?= esc($message) ?></div>
-    <?php endif; ?>
-
-    <?php if (empty($announcements)) : ?>
-        <div class="alert alert-info">No announcements yet.</div>
-    <?php else: ?>
-        <div class="list-group">
-            <?php foreach ($announcements as $a): ?>
-                <div class="list-group-item mb-2">
-                    <h5 class="mb-1"><?= esc($a['title']) ?></h5>
-                    <small class="text-muted"><?= date('F j, Y, g:ia', strtotime($a['created_at'])) ?></small>
-                    <p class="mb-0 mt-2"><?= nl2br(esc($a['content'])) ?></p>
-                </div>
-            <?php endforeach; ?>
+                <?php if (empty($announcements)): ?>
+                    <div class="alert alert-info">
+                        No announcements available at the moment.
+                    </div>
+                <?php else: ?>
+                    <div class="list-group">
+                        <?php foreach ($announcements as $announcement): ?>
+                            <div class="list-group-item mb-3">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><?= esc($announcement['title']) ?></h5>
+                                    <small><?= date('M j, Y g:i A', strtotime($announcement['created_at'])) ?></small>
+                                </div>
+                                <p class="mb-1"><?= nl2br(esc($announcement['content'])) ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
-    <?php endif; ?>
-</div>
+    </div>
 </body>
 </html>
