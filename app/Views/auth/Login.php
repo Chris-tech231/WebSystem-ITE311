@@ -1,71 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+<?= $this->include('templates/header') ?>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="/">MyApp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="<?= site_url('login') ?>">login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('register') ?>">Register</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- Login Form -->
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
-            <div class="card shadow-sm">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="bi bi-box-arrow-in-right"></i> Login</h4>
+                </div>
                 <div class="card-body">
-                    <h3 class="card-title mb-4 text-center">User Login</h3>
-
-                    <?php if(session()->getFlashdata('success')): ?>
-                        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+                    <?php if (isset($validation)): ?>
+                        <div class="alert alert-danger">
+                            <?= $validation->listErrors() ?>
+                        </div>
                     <?php endif; ?>
 
-                    <?php if(session()->getFlashdata('error')): ?>
-                        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-                    <?php endif; ?>
-
-                    <?php if(isset($validation)): ?>
-                        <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
-                    <?php endif; ?>
-
-                    <form method="post" action="<?= site_url('login') ?>">
+                    <form action="<?= base_url('/login') ?>" method="post">
+                        <?= csrf_field() ?>
+                        
                         <div class="mb-3">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                   value="<?= old('email') ?>" required>
                         </div>
 
                         <div class="mb-3">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                            </button>
+                        </div>
                     </form>
 
-                    <p class="mt-3 text-center">
-                        Don’t have an account? <a href="<?= site_url('register') ?>">Register here</a>
+                    <hr>
+                    <p class="text-center mb-0">
+                        Don't have an account? 
+                        <a href="<?= base_url('/register') ?>">Register here</a>
                     </p>
                 </div>
             </div>
@@ -73,6 +46,4 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?= $this->include('templates/footer') ?>

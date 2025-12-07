@@ -6,48 +6,42 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-// Default route (homepage)
+// Home
 $routes->get('/', 'Home::index');
 
-// About page
-$routes->get('about', 'Home::about');
+// Authentication Routes
+$routes->get('/login', 'Auth::login');
+$routes->post('/login', 'Auth::login');
+$routes->get('/register', 'Auth::register');
+$routes->post('/register', 'Auth::register');
+$routes->get('/logout', 'Auth::logout');
 
-// Contact page
-$routes->get('contact', 'Home::contact');
+// Dashboard Route (Unified for all roles)
+$routes->get('/dashboard', 'Auth::dashboard');
 
-// Optional: Allow "/home" to work as well
-$routes->get('home', 'Home::index');
+// Profile Route (available to all authenticated users)
+$routes->get('/profile', 'Auth::profile');
+$routes->post('/profile', 'Auth::profile');
 
-$routes->get('register', 'Auth::register');
-$routes->post('register', 'Auth::register');
-
-// Normalize to lowercase routes
-$routes->get('Login', 'Auth::login');
-$routes->post('login', 'Auth::login');
-
-$routes->get('logout', 'Auth::logout');
-$routes->get('dashboard', 'Auth::dashboard');
-
-// Backward compatible uppercase aliases (avoid 404 when users hit /Register or /Login)
-$routes->get('Register', 'Auth::register');
-$routes->post('register', 'Auth::register');
-$routes->get('login', 'Auth::login');
-$routes->post('login', 'Auth::login');
-
-$routes->get('/announcements', 'Announcements::index');
-
-$routes->get('announcements', 'Announcements::index');
-
-// Protected routes with RoleAuth filter
-$routes->group('admin', ['filter' => 'roleauth'], function($routes) {
-    $routes->get('dashboard', 'Admin::dashboard');
+// Admin Routes (protected by auth and role filters)
+$routes->group('admin', ['filter' => 'auth'], function($routes) {
+    $routes->get('users', 'Admin::users');
+    $routes->get('courses', 'Admin::courses');
+    $routes->get('settings', 'Admin::settings');
+    $routes->get('reports', 'Admin::reports');
 });
 
-$routes->group('teacher', ['filter' => 'roleauth'], function($routes) {
-    $routes->get('dashboard', 'Teacher::dashboard');
+// Teacher Routes (protected by auth and role filters)
+$routes->group('teacher', ['filter' => 'auth'], function($routes) {
+    $routes->get('courses', 'Teacher::courses');
+    $routes->get('students', 'Teacher::students');
+    $routes->get('assignments', 'Teacher::assignments');
+    $routes->get('grades', 'Teacher::grades');
 });
 
-// You can add student routes here if needed in the future
-$routes->group('student', ['filter' => 'roleauth'], function($routes) {
-    // Add student-specific routes here
+// Student Routes (protected by auth and role filters)
+$routes->group('student', ['filter' => 'auth'], function($routes) {
+    $routes->get('courses', 'Student::courses');
+    $routes->get('assignments', 'Student::assignments');
+    $routes->get('grades', 'Student::grades');
 });
